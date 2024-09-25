@@ -14,7 +14,7 @@ interface Address {
   reference: string;
 }
 
-interface Supplier {
+export interface Supplier {
   id: string;
   name: string;
   description: string;
