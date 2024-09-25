@@ -1,14 +1,14 @@
 import { QueryConfig } from "@/lib/react-query";
 import { useQuery } from "@tanstack/react-query";
-import { getSuppliersQueryOptions } from "./query-config";
+import { suppliersQueryOptions } from "./query-config";
 
 type UseSuppliersOptions = {
-  queryConfig?: QueryConfig<typeof getSuppliersQueryOptions>;
+  queryConfig?: QueryConfig<typeof suppliersQueryOptions>;
 };
 
 export const useGetSuppliers = (args?: UseSuppliersOptions) => {
   return useQuery({
-    ...getSuppliersQueryOptions(),
+    ...suppliersQueryOptions(),
     ...(args?.queryConfig || []),
   });
 };

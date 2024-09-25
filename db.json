@@ -13,6 +13,20 @@
         "number": "356",
         "reference": "Perto da casa da construção"
       }
+    },
+    {
+      "id": "2",
+      "name": "Hector Salamandra",
+      "description": "Distribuidor de Mesas",
+      "contact": [{ "name": "whatsapp", "phone": "(31) 994536-4356" }],
+      "address": {
+        "code": "31875-225",
+        "state": "MG",
+        "city": "Belo Horizonte",
+        "street": "Rua Coronel Praes, Sagrada Família",
+        "number": "326",
+        "reference": "Perto da casa da construção"
+      }
     }
   ]
 }

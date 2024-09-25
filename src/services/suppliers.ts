@@ -31,7 +31,7 @@ const getSupplierById = (id: string) => {
 };
 
 const removeSupplier = (id: string) => {
-  return api.delete<void>(`/suppliers/${id}`);
+  return api.delete<Supplier>(`/suppliers/${id}`);
 };
 
 const editSupplier = (args: { id: string; supplier: Supplier }) => {
