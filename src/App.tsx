@@ -1,7 +1,7 @@
 import "./App.css";
 import { ThemeProvider } from "styled-components";
 import { vexpensesTheme } from "./styles/theme/theme";
-import { Button } from "./components/ui/buttons/button";
+import { Button } from "@/components/ui";
 
 function App() {
   return (
