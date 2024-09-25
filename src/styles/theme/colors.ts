@@ -1,14 +1,13 @@
 export interface Colors {
   primary: {
-    primary: string;
     dark: string;
-    medium: string;
+    main: string;
     light: string;
+    contrastText: string;
   };
-  white: string;
-  gray: {
-    medium: string;
-    light: string;
-    dark: string;
+  grey: {
+    50: string;
+    100: string;
+    200: string;
   };
 }
