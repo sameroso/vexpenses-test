@@ -1,0 +1,18 @@
+{
+  "suppliers": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "description": "Distribuidor de papel",
+      "contact": [{ "name": "John Doe", "phone": "(31) 994566-4356" }],
+      "address": {
+        "code": "31875-235",
+        "state": "MG",
+        "city": "Belo Horizonte",
+        "street": "Rua Coronel Praes, Sagrada Família",
+        "number": "356",
+        "reference": "Perto da casa da construção"
+      }
+    }
+  ]
+}
