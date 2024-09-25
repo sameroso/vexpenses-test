@@ -1,18 +1,13 @@
-import "./App.css";
 import { ThemeProvider } from "styled-components";
 import { vexpensesTheme } from "./styles/theme/theme";
-import { Button } from "@/components/ui";
+import { SupplierCard } from "@/features/supplier/components/supplier-card";
+import { GlobalStyle } from "@/styles/theme/global-style";
 
 function App() {
   return (
     <ThemeProvider theme={vexpensesTheme}>
-      <Button
-        onClick={() => {
-          console.log("clicked");
-        }}
-      >
-        I am a button
-      </Button>
+      <GlobalStyle />
+      <SupplierCard />
     </ThemeProvider>
   );
 }
