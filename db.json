@@ -65,14 +65,19 @@
       "name": "asda",
       "description": "asdads",
       "address": {
-        "code": "asdada",
         "city": "asdasd",
+        "code": "asdada",
         "number": "12312",
-        "street": "1231",
+        "reference": "123",
         "state": "21",
-        "reference": "123"
+        "street": "1231"
       },
-      "contact": []
+      "contact": [
+        {
+          "name": "Samer Kayali Koubeissi Rola",
+          "phone": "31991566498"
+        }
+      ]
     },
     {
       "id": "5862",
