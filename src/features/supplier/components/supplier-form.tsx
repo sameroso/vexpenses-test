@@ -2,7 +2,7 @@ import { useFieldArray, useForm, UseFormReturn } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Supplier } from "@/services/suppliers";
-import {  ReactNode } from "react";
+import { ReactNode } from "react";
 import { Button } from "@/components/ui";
 import { useGetAddressByCep } from "@/features/common/adress/api/get-adress-by-cep";
 import { Input } from "@/components/ui/inputs/input";
@@ -49,15 +49,22 @@ const schema = yup
   .required();
 
 interface SupplierFormProps {
-  supplier?: Partial<Supplier>;
+  supplier?: Omit<Supplier, "id">;
   children?: (props: UseFormReturn<Omit<Supplier, "id">>) => ReactNode;
 }
 
 export function SupplierForm(props: SupplierFormProps) {
   const formArgs = useForm<Omit<Supplier, "id">>({
-    defaultValues: !props.supplier?.contact?.length
-      ? { ...props.supplier, ...{ contact: [{ name: "", phone: "" }] } }
-      : props.supplier,
+    defaultValues: {
+      ...props.supplier,
+      contact: props?.supplier?.contact.length
+        ? props.supplier.contact
+        : [{ name: "", phone: "" }],
+      address: {
+        ...props.supplier?.address,
+        state: props.supplier?.address.state || "",
+      },
+    },
     resolver: yupResolver(schema),
   });
 

@@ -4,7 +4,7 @@ import { GlobalStyle } from "@/styles/theme/global-style";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Container } from "@/components/ui";
-import { Supplier } from "@/pages/supplier";
+import { SupplierPage } from "@/pages/supplier";
 
 const queryClient = new QueryClient();
 
@@ -13,7 +13,7 @@ function App() {
     <ThemeProvider theme={vexpensesTheme}>
       <QueryClientProvider client={queryClient}>
         <Container>
-          <Supplier />
+          <SupplierPage />
         </Container>
         <ReactQueryDevtools initialIsOpen={false} />
         <GlobalStyle />

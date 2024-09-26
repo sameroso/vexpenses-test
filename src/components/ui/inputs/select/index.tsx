@@ -47,12 +47,7 @@ function SelectComponent(
       <SelectWrapper>
         <StyledLabel>{label}</StyledLabel>
         <div>
-          <StyledSelect
-            {...rest}
-            value={rest.value || ""}
-            aria-label="Selecione uma opção"
-            ref={ref}
-          >
+          <StyledSelect {...rest} aria-label="Selecione uma opção" ref={ref}>
             <StyledOption value="" disabled>
               Selecione uma opção
             </StyledOption>

@@ -2,7 +2,7 @@
   "suppliers": [
     {
       "id": "1",
-      "name": "John",
+      "name": "John1",
       "description": "Distribuidor de papel",
       "contact": [
         {
@@ -51,14 +51,19 @@
       "name": "asda",
       "description": "asdads",
       "address": {
-        "code": "asdada",
-        "city": "asdasd",
+        "code": "31035590",
+        "city": "Belo Horizonte",
         "number": "12312",
-        "street": "1231",
-        "state": "21",
+        "street": "Rua Coronel Praes",
+        "state": "MG",
         "reference": "123"
       },
-      "contact": []
+      "contact": [
+        {
+          "name": "Samer Kayali Koubeissi Rola",
+          "phone": "31991566498"
+        }
+      ]
     },
     {
       "id": "8b0b",

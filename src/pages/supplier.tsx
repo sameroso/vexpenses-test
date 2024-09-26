@@ -5,6 +5,8 @@ import { useCreateSupplier } from "@/features/supplier/api/create-supplier";
 import { Button, Modal, ModalBody, ModalHeader } from "@/components/ui";
 import { useState } from "react";
 import styled from "styled-components";
+import { Supplier } from "@/services/suppliers";
+import { useEditSupplier } from "@/features/supplier/api/edit-supplier";
 // import { useRemoveSupplier } from "@/features/supplier/api/remove-suppliers";
 
 export const FormFieldsContainer = styled.div`
@@ -29,27 +31,20 @@ export const FormFieldsContainer = styled.div`
   gap: 16px;
 `;
 
-export const Supplier = () => {
+export const SupplierPage = () => {
   const { data } = useGetSuppliers();
 
-  //   const removeSupplierMutation = useRemoveSupplier({
-  //     mutationConfig: {
-  //       onSuccess: (data) => {
-  //         alert(`removeu o fornecedor ${data.data.name} com sucesso!`);
-  //       },
-  //       onError: () => {
-  //         alert("falha ao remover o fornecedor, por favor tente novamente");
-  //       },
-  //     },
-  //   });
+  const [selectedSupplier, setSelectedSupplier] = useState<Supplier>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const createSupplierMutation = useCreateSupplier();
+  const editSupplierMutation = useEditSupplier();
   return (
     <>
       <Button
         onClick={() => {
+          setSelectedSupplier(undefined);
           setIsModalOpen(true);
         }}
       >
@@ -61,7 +56,7 @@ export const Supplier = () => {
           <Button onClick={() => setIsModalOpen(false)}>Fechar</Button>
         </ModalHeader>
         <ModalBody>
-          <SupplierForm>
+          <SupplierForm supplier={selectedSupplier}>
             {({ handleSubmit }) => {
               return (
                 <>
@@ -71,12 +66,25 @@ export const Supplier = () => {
                   <Button
                     type="button"
                     onClick={handleSubmit(async (data) => {
-                      try {
-                        await createSupplierMutation.mutateAsync(data);
-                        setIsModalOpen(false);
-                      } catch {
-                        alert("não foi opssivel salvar");
-                        setIsModalOpen(false);
+                      if (!selectedSupplier) {
+                        try {
+                          await createSupplierMutation.mutateAsync(data);
+                          setIsModalOpen(false);
+                        } catch {
+                          alert("não foi opssivel salvar");
+                          setIsModalOpen(false);
+                        }
+                      } else {
+                        try {
+                          await editSupplierMutation.mutateAsync({
+                            id: selectedSupplier.id,
+                            supplier: { ...data, id: selectedSupplier.id },
+                          });
+                          setIsModalOpen(false);
+                        } catch {
+                          alert("não foi opssivel salvar");
+                          setIsModalOpen(false);
+                        }
                       }
                     })}
                   >
@@ -94,25 +102,13 @@ export const Supplier = () => {
         <FormFieldsContainer>
           {data?.data.map((supplier) => {
             return (
-              <div
-                key={supplier.id}
-                // onClick={() => {
-                //   removeSupplierMutation.mutate(supplier.id);
-                // }}
-              >
+              <div key={supplier.id}>
                 <SupplierCard
-                  id={supplier.id}
-                  address={{
-                    city: supplier?.address.city || "",
-                    code: supplier?.address.code || "",
-                    number: supplier?.address.number || "",
-                    reference: supplier?.address.reference || "",
-                    state: supplier?.address?.state || "",
-                    street: supplier?.address.street || "",
+                  supplier={supplier}
+                  onClickEdit={(supplier) => {
+                    setSelectedSupplier(supplier);
+                    setIsModalOpen(true);
                   }}
-                  contact={supplier?.contact || []}
-                  description={supplier?.description || ""}
-                  name={supplier?.name || ""}
                 />
               </div>
             );
