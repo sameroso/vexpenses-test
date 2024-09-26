@@ -14,7 +14,7 @@ function App() {
     <ThemeProvider theme={vexpensesTheme}>
       <QueryClientProvider client={queryClient}>
         <Supplier />
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={false} />  
         <GlobalStyle />
       </QueryClientProvider>
     </ThemeProvider>
