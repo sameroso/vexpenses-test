@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { Supplier } from "@/services/suppliers";
 import { useEditSupplier } from "@/features/supplier/api/edit-supplier";
 import { useRemoveSupplier } from "@/features/supplier/api/remove-suppliers";
+import { downloadCSV } from "@/utils/csv-helpers";
 // import { useRemoveSupplier } from "@/features/supplier/api/remove-suppliers";
 
 export const FormFieldsContainer = styled.div`
@@ -53,6 +54,9 @@ export const SupplierPage = () => {
       >
         Adicionar Fornecedor
       </Button>
+      <Button onClick={() => downloadCSV(data?.data || [{}], "suppliers")}>
+        Exportar para csv
+      </Button>
       <Modal isOpen={isDeleteModalOpen}>
         <ModalHeader>
           <div>Remover Fornecedor</div>
@@ -61,7 +65,9 @@ export const SupplierPage = () => {
         <ModalBody>
           <>
             <p>Deseja remover o fornecedor {selectedSupplier?.name}?</p>
-            <Button onClick={() => setIsDeleteModalOpen(false)}>cancelar</Button>
+            <Button onClick={() => setIsDeleteModalOpen(false)}>
+              cancelar
+            </Button>
             <Button
               type="button"
               onClick={async () => {
