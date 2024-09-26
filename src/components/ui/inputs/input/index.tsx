@@ -43,7 +43,7 @@ function InputComponent(
     <InputWrapper>
       <StyledLabel htmlFor="styledInput">{label}</StyledLabel>
       <StyledInput {...rest} ref={ref} />
-      <StyledErrorMessage>{errorMessage||' '}</StyledErrorMessage>
+      <StyledErrorMessage>{errorMessage || " "}</StyledErrorMessage>
     </InputWrapper>
   );
 }

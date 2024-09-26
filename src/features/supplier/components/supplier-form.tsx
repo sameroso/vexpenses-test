@@ -12,6 +12,7 @@ import {
 } from "./supplier-form-components";
 import { Select } from "@/components/ui/inputs/select";
 import { states } from "@/utils/brazilian-states";
+import { cepMask, phoneMask } from "@/utils/masks";
 
 const schema = yup
   .object({
@@ -22,14 +23,20 @@ const schema = yup
       .of(
         yup.object({
           name: yup.string().required("Este campo é obrigatório"),
-          phone: yup.string().required("Este campo é obrigatório"),
+          phone: yup
+            .string()
+            .required("Este campo é obrigatório")
+            .min(15, "Telefone Inválido"),
         })
       )
       .required(),
     address: yup
       .object({
-        code: yup.string().required("Este campo é obrigatório"),
-        state: yup.string().required("Este campo é obrigatório").min(2).max(2),
+        code: yup
+          .string()
+          .required("Este campo é obrigatório")
+          .min(9, "CEP inválido"),
+        state: yup.string().required("Este campo é obrigatório").min(2),
         city: yup
           .string()
           .required("Este campo é obrigatório")
@@ -55,6 +62,7 @@ interface SupplierFormProps {
 
 export function SupplierForm(props: SupplierFormProps) {
   const formArgs = useForm<Omit<Supplier, "id">>({
+    mode:'all',
     defaultValues: {
       ...props.supplier,
       contact: props?.supplier?.contact.length
@@ -79,8 +87,8 @@ export function SupplierForm(props: SupplierFormProps) {
   const cep = watch("address.code") || "";
 
   useGetAddressByCep({
-    cep,
-    queryConfig: { enabled: cep.length === 8 },
+    cep: cep.replace("-", ""),
+    queryConfig: { enabled: cep.length === 9 },
 
     onSuccess: (res) => {
       setValue("address.city", res.data.localidade);
@@ -121,6 +129,11 @@ export function SupplierForm(props: SupplierFormProps) {
           label="CEP"
           errorMessage={errors.address?.code?.message}
           autoComplete="off"
+          maxLength={9}
+          onChange={(e) => {
+            register("address.code").onChange(e);
+            setValue("address.code", cepMask(e.target.value));
+          }}
         />
 
         <Input
@@ -188,8 +201,16 @@ export function SupplierForm(props: SupplierFormProps) {
               />
               <Input
                 label="Telefone"
-                autoComplete="off"
+                maxLength={15}
                 {...register(`contact.${index}.phone` as const)}
+                onChange={(e) => {
+                  register(`contact.${index}.phone` as const).onChange(e);
+                  setValue(
+                    `contact.${index}.phone` as const,
+                    phoneMask(e.target.value)
+                  );
+                }}
+                autoComplete="off"
                 errorMessage={errors?.contact?.[index]?.phone?.message}
               />
             </div>

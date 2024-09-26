@@ -96,7 +96,7 @@ export const SupplierCard = (props: {
             }}
           >
             {props.supplier?.contact.map((contact) => (
-              <div>
+              <div key={contact.phone}>
                 <div>
                   <div>{contact.name}</div>
                 </div>

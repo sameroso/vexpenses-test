@@ -11,16 +11,24 @@
         },
         {
           "name": "Miguel",
-          "phone": "316512312312312"
+          "phone": "(12) 31112-3331"
+        },
+        {
+          "name": "123",
+          "phone": "(12) 31111-1111"
+        },
+        {
+          "name": "1",
+          "phone": "(11) 11111-1111"
         }
       ],
       "address": {
         "city": "Belo Horizonte",
-        "code": "31875-225",
+        "code": "31035-590",
         "number": "326",
         "reference": "Perto da casa da construção",
         "state": "MG",
-        "street": "Rua Coronel Praes, Sagrada Família"
+        "street": "Rua Coronel Praes"
       }
     },
     {
@@ -109,6 +117,26 @@
         {
           "name": "123",
           "phone": "123"
+        },
+        {
+          "name": "12312",
+          "phone": "123123123"
+        },
+        {
+          "name": "123123",
+          "phone": "1231231"
+        },
+        {
+          "name": "123123",
+          "phone": "123131"
+        },
+        {
+          "name": "123123",
+          "phone": "12312313"
+        },
+        {
+          "name": "1231331321321",
+          "phone": "3122313212312313"
         }
       ],
       "address": {
