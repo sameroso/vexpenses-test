@@ -9,6 +9,7 @@ import { states } from "@/utils/brazilian-states";
 export const SupplierCard = (props: {
   supplier?: Supplier;
   onClickEdit: (supplier: Supplier) => void;
+  onClickDelete: (supplier: Supplier) => void;
 }) => {
   return (
     <Card>
@@ -21,13 +22,22 @@ export const SupplierCard = (props: {
       >
         <CardTitle>{props.supplier?.name}</CardTitle>
 
-        <Button
-          onClick={() => {
-            props.onClickEdit(props.supplier!);
-          }}
-        >
-          Editar
-        </Button>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <Button
+            onClick={() => {
+              props.onClickDelete(props.supplier!);
+            }}
+          >
+            Remover
+          </Button>
+          <Button
+            onClick={() => {
+              props.onClickEdit(props.supplier!);
+            }}
+          >
+            Editar
+          </Button>
+        </div>
       </div>
       <CardContent style={{ overflowY: "auto" }}>
         <>

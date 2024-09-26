@@ -1,29 +1,6 @@
 {
   "suppliers": [
     {
-      "id": "1",
-      "name": "John1",
-      "description": "Distribuidor de papel",
-      "contact": [
-        {
-          "name": "John Doe",
-          "phone": "(31) 994566-4356"
-        },
-        {
-          "name": "Mineirin do queijo",
-          "phone": "(31) 99156-6498"
-        }
-      ],
-      "address": {
-        "city": "Belo Horizonte",
-        "code": "31875-235",
-        "number": "356",
-        "reference": "Perto da casa da construção",
-        "state": "MG",
-        "street": "Rua Coronel Praes, Sagrada Família"
-      }
-    },
-    {
       "id": "2",
       "name": "Hector Salamandra senho das armas",
       "description": "Distribuidor de Mesas",
@@ -57,25 +34,6 @@
         "street": "Rua Coronel Praes",
         "state": "MG",
         "reference": "123"
-      },
-      "contact": [
-        {
-          "name": "Samer Kayali Koubeissi Rola",
-          "phone": "31991566498"
-        }
-      ]
-    },
-    {
-      "id": "8b0b",
-      "name": "asda",
-      "description": "asdads",
-      "address": {
-        "city": "asdasd",
-        "code": "asdada",
-        "number": "12312",
-        "reference": "123",
-        "state": "21",
-        "street": "1231"
       },
       "contact": [
         {
@@ -146,31 +104,23 @@
       }
     },
     {
-      "id": "e801",
+      "id": "578e",
       "contact": [
         {
           "name": "123",
           "phone": "123"
-        },
-        {
-          "name": "1111",
-          "phone": "111"
-        },
-        {
-          "name": "222",
-          "phone": "222"
         }
       ],
-      "name": "12313",
-      "description": "123123",
       "address": {
+        "state": "MG",
         "code": "31035590",
         "city": "Belo Horizonte",
-        "number": "123",
+        "number": "319",
         "street": "Rua Coronel Praes",
-        "state": "MG",
         "reference": "123"
-      }
+      },
+      "name": "Samer Kayali Koubeissi Rola",
+      "description": "123"
     }
   ]
 }
