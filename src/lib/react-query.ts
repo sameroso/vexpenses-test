@@ -1,8 +1,9 @@
 import { UseMutationOptions } from "@tanstack/react-query";
 
-export type QueryConfig<T extends (...args: unknown[]) => unknown> = Omit<
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type QueryConfig<T extends (...args: any[]) => unknown> = Omit<
   ReturnType<T>,
-  "queryKey" | "queryFn"
+  "queryKey"
 >;
 
 export type ApiFnReturnType<

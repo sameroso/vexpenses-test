@@ -11,13 +11,13 @@ interface Address {
   city: string;
   street: string;
   number: string;
-  reference: string;
+  reference?: string;
 }
 
 export interface Supplier {
   id: string;
   name: string;
-  description: string;
+  description?: string;
   contact: Contact[];
   address: Address;
 }
@@ -38,8 +38,8 @@ const editSupplier = (args: { id: string; supplier: Supplier }) => {
   return api.patch(`/suppliers/${args.id}`, args.supplier);
 };
 
-const createSupplier = (args: Supplier) => {
-  return api.post("/suppliers", args);
+const createSupplier = (args: Omit<Supplier, "id">) => {
+  return api.post<Supplier>("/suppliers", args);
 };
 
 export const supplierService = {

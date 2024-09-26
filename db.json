@@ -2,31 +2,96 @@
   "suppliers": [
     {
       "id": "1",
-      "name": "John Doe",
+      "name": "John Doeasdas",
       "description": "Distribuidor de papel",
-      "contact": [{ "name": "John Doe", "phone": "(31) 994566-4356" }],
+      "contact": [
+        {
+          "name": "John Doe",
+          "phone": "(31) 994566-4356"
+        },
+        {
+          "name": "Mineirin do queijo",
+          "phone": "(31) 99156-6498"
+        }
+      ],
       "address": {
-        "code": "31875-235",
-        "state": "MG",
         "city": "Belo Horizonte",
-        "street": "Rua Coronel Praes, Sagrada Família",
+        "code": "31875-235",
         "number": "356",
-        "reference": "Perto da casa da construção"
+        "reference": "Perto da casa da construção",
+        "state": "MG",
+        "street": "Rua Coronel Praes, Sagrada Família"
       }
     },
     {
       "id": "2",
-      "name": "Hector Salamandra",
+      "name": "Hector Salamandra senho das armas",
       "description": "Distribuidor de Mesas",
-      "contact": [{ "name": "whatsapp", "phone": "(31) 994536-4356" }],
+      "contact": [
+        {
+          "name": "whatsapp",
+          "phone": "(31) 994536-4356"
+        }
+      ],
       "address": {
-        "code": "31875-225",
-        "state": "MG",
         "city": "Belo Horizonte",
-        "street": "Rua Coronel Praes, Sagrada Família",
+        "code": "31875-225",
         "number": "326",
-        "reference": "Perto da casa da construção"
+        "reference": "Perto da casa da construção",
+        "state": "MG",
+        "street": "Rua Coronel Praes, Sagrada Família"
       }
+    },
+    {
+      "id": "75dc",
+      "name": "asda",
+      "description": "asdads",
+      "address": {
+        "code": "asdada",
+        "city": "asdasd",
+        "number": "12312",
+        "street": "1231",
+        "state": "21",
+        "reference": "123"
+      },
+      "contact": []
+    },
+    {
+      "id": "8b0b",
+      "name": "asda",
+      "description": "asdads",
+      "address": {
+        "code": "asdada",
+        "city": "asdasd",
+        "number": "12312",
+        "street": "1231",
+        "state": "21",
+        "reference": "123"
+      },
+      "contact": []
+    },
+    {
+      "id": "5862",
+      "name": "Thiago",
+      "description": "Carinha que mora logo ali",
+      "address": {
+        "city": "João Monlevade",
+        "code": "35930048",
+        "number": "12",
+        "reference": "perto do posto de gasolina",
+        "state": "MG",
+        "street": "Rua Poços de Caldas"
+      },
+      "contact": [
+        {
+          "name": "whatsapp",
+          "phone": "31998788554"
+        },
+        {
+          "name": "telefone",
+          "phone": "3133234555"
+        }
+      ]
     }
   ]
 }

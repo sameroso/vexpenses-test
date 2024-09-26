@@ -4,13 +4,13 @@ import { MutationConfig } from "@/lib/react-query";
 import { supplierService } from "@/services/suppliers";
 import { suppliersQueryOptions } from "./query-config";
 
-type UseDeleteUserOptions = {
-  mutationConfig?: MutationConfig<typeof supplierService.removeSupplier>;
+type UseCreateSuppliersOptions = {
+  mutationConfig?: MutationConfig<typeof supplierService.createSupplier>;
 };
 
-export const useRemoveSupplier = ({
+export const useCreateSupplier = ({
   mutationConfig,
-}: UseDeleteUserOptions = {}) => {
+}: UseCreateSuppliersOptions = {}) => {
   const queryClient = useQueryClient();
 
   const { onSuccess, ...restConfig } = mutationConfig || {};
@@ -23,6 +23,6 @@ export const useRemoveSupplier = ({
       onSuccess?.(...args);
     },
     ...restConfig,
-    mutationFn: supplierService.removeSupplier,
+    mutationFn: supplierService.createSupplier,
   });
 };

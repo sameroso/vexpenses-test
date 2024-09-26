@@ -10,4 +10,7 @@ export interface Colors {
     100: string;
     200: string;
   };
+  error: {
+    main: string;
+  };
 }
