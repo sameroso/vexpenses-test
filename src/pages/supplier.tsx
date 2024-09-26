@@ -4,34 +4,14 @@ import { SupplierForm } from "@/features/supplier/components/supplier-form";
 import { useCreateSupplier } from "@/features/supplier/api/create-supplier";
 import { Button, Modal, ModalBody, ModalHeader } from "@/components/ui";
 import { useState } from "react";
-import styled from "styled-components";
 import { Supplier } from "@/services/suppliers";
 import { useEditSupplier } from "@/features/supplier/api/edit-supplier";
 import { useRemoveSupplier } from "@/features/supplier/api/remove-suppliers";
 import { downloadCSV } from "@/utils/csv-helpers";
+import { Add } from "@/components/ui/icons/add";
+import { Export } from "@/components/ui/icons/export";
+import { CardsContainer } from "./styles";
 // import { useRemoveSupplier } from "@/features/supplier/api/remove-suppliers";
-
-export const FormFieldsContainer = styled.div`
-  display: grid;
-  width: 100%;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  gap: 16px;
-`;
 
 export const SupplierPage = () => {
   const { data } = useGetSuppliers();
@@ -46,17 +26,30 @@ export const SupplierPage = () => {
   const removeSupplierMutation = useRemoveSupplier();
   return (
     <>
-      <Button
-        onClick={() => {
-          setSelectedSupplier(undefined);
-          setIsModalOpen(true);
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "end",
+          padding: "16px",
+          gap: "8px",
         }}
       >
-        Adicionar Fornecedor
-      </Button>
-      <Button onClick={() => downloadCSV(data?.data || [{}], "suppliers")}>
-        Exportar para csv
-      </Button>
+        <Add
+          id="addSupplier"
+          onClick={() => {
+            setSelectedSupplier(undefined);
+            setIsModalOpen(true);
+          }}
+          tooltipContent="Adicionar Fornecedor"
+        />
+
+        <Export
+          tooltipContent="Exportar CSV"
+          id="downloadCsv"
+          onClick={() => downloadCSV(data?.data || [{}], "suppliers")}
+        />
+      </div>
+
       <Modal isOpen={isDeleteModalOpen}>
         <ModalHeader>
           <div>Remover Fornecedor</div>
@@ -137,27 +130,26 @@ export const SupplierPage = () => {
           </SupplierForm>
         </ModalBody>
       </Modal>
-      <div style={{ height: "90vh", overflowY: "scroll" }}>
-        <FormFieldsContainer>
-          {data?.data.map((supplier) => {
-            return (
-              <div key={supplier.id}>
-                <SupplierCard
-                  onClickDelete={(supplier) => {
-                    setSelectedSupplier(supplier);
-                    setIsDeleteModalOpen(true);
-                  }}
-                  supplier={supplier}
-                  onClickEdit={(supplier) => {
-                    setSelectedSupplier(supplier);
-                    setIsModalOpen(true);
-                  }}
-                />
-              </div>
-            );
-          })}
-        </FormFieldsContainer>
-      </div>
+
+      <CardsContainer>
+        {data?.data.map((supplier) => {
+          return (
+            <div key={supplier.id}>
+              <SupplierCard
+                onClickDelete={(supplier) => {
+                  setSelectedSupplier(supplier);
+                  setIsDeleteModalOpen(true);
+                }}
+                supplier={supplier}
+                onClickEdit={(supplier) => {
+                  setSelectedSupplier(supplier);
+                  setIsModalOpen(true);
+                }}
+              />
+            </div>
+          );
+        })}
+      </CardsContainer>
     </>
   );
 };
