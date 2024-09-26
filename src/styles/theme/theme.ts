@@ -10,9 +10,16 @@ const vexpensesTheme: DefaultTheme = {
       main: "#0082f5",
       contrastText: "#ffffff",
     },
-    error:{
-      main: '#d32f2f'
-    }
+    error: {
+      main: "#d32f2f",
+    },
+  },
+  breakpoints: {
+    xs: "0px",
+    sm: "600px",
+    md: "900px",
+    lg: "1200px",
+    xl: "1536px",
   },
 };
 
