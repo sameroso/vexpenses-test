@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const CardsContainer = styled.div`
   display: grid;
   width: 100%;
-  height: 90vh;
+  height: 75vh;
+  padding: 16px;
   overflow-y: auto;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
