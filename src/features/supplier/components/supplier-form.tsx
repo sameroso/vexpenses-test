@@ -3,17 +3,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { SupplierDTO } from "@/services/suppliers";
 import { ReactNode } from "react";
-import { Button } from "@/components/ui";
+import { Button, Minus } from "@/components/ui";
 import { useGetAddressByCep } from "@/features/common/adress/api/get-adress-by-cep";
 import { Input } from "@/components/ui/inputs/input";
 import {
   FieldGroupTitle,
   FormFieldsContainer,
+  StyledContactWrapper,
 } from "./supplier-form-components";
 import { Select } from "@/components/ui/inputs/select";
 import { states } from "@/utils/brazilian-states";
 import { cepMask, phoneMask } from "@/utils/masks";
-import { Delete } from "@/components/ui/icons/delete";
 
 const schema = yup
   .object({
@@ -181,20 +181,21 @@ export function SupplierForm(props: SupplierFormProps) {
           errorMessage={errors.address?.reference?.message}
         />
       </FormFieldsContainer>
-      <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-        <FieldGroupTitle>Contatos</FieldGroupTitle>
-      </div>
+
+      <FieldGroupTitle>Contatos</FieldGroupTitle>
       <FormFieldsContainer>
         {fields.map((contact, index) => {
           return (
-            <div key={contact.phone + index}>
-              <Delete
-                tooltipContent="Remover contato"
-                id={`removeContact${index}`}
-                onClick={() => {
-                  remove(index);
-                }}
-              />
+            <StyledContactWrapper key={contact.phone + index}>
+              <div style={{ textAlign: "right" }}>
+                <Minus
+                  tooltipContent="Remover contato"
+                  id={`removeContact${index}`}
+                  onClick={() => {
+                    remove(index);
+                  }}
+                />
+              </div>
               <Input
                 label="Nome"
                 autoComplete="off"
@@ -215,11 +216,11 @@ export function SupplierForm(props: SupplierFormProps) {
                 autoComplete="off"
                 errorMessage={errors?.contact?.[index]?.phone?.message}
               />
-            </div>
+            </StyledContactWrapper>
           );
         })}
       </FormFieldsContainer>
-      <div style={{ textAlign: "right" }}>
+      <div style={{ margin: "10px 0px" }}>
         <Button
           type="button"
           onClick={() => {

@@ -78,14 +78,16 @@ export const SupplierModalActions = (props: EditModalProps) => {
         <SupplierForm formFields={props.supplier}>
           {({ handleSubmit }) => {
             return (
-              <>
+              <div
+                style={{ display: "flex", justifyContent: "end", gap: "8px" }}
+              >
                 <Button onClick={props.onClose}>cancelar</Button>
                 <Button type="button" onClick={handleSubmit(handleSubmitForm)}>
                   {createSupplierMutation.status === "pending"
                     ? "Salvando"
                     : "Salvar"}
                 </Button>
-              </>
+              </div>
             );
           }}
         </SupplierForm>
