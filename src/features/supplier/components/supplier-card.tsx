@@ -28,11 +28,13 @@ const InfoField = ({ label = '', value = '' }: InfoFieldProps) => {
     )
 }
 
-export const SupplierCard = (props: {
+interface SupplierCardProps {
     supplier?: SupplierDTO
     onClickEdit: (supplier: SupplierDTO) => void
     onClickDelete: (supplier: SupplierDTO) => void
-}) => {
+}
+
+export const SupplierCard = (props: SupplierCardProps) => {
     const supplierStateAdress =
         states.find((val) => val.uf === props.supplier?.address.state || '')
             ?.name || ''

@@ -18,6 +18,44 @@
       },
       "name": "Samer Kayali Koubeissi Rola",
       "description": "Fornecedor de sapatos"
+    },
+    {
+      "id": "bdbb",
+      "contact": [
+        {
+          "name": "123",
+          "phone": "(12) 31231-2312"
+        }
+      ],
+      "address": {
+        "state": "MG",
+        "code": "31035-590",
+        "city": "Belo Horizonte",
+        "number": "319",
+        "street": "Rua Coronel Praes",
+        "reference": ""
+      },
+      "name": "Samer Kayali Koubeissi Rola",
+      "description": "123"
+    },
+    {
+      "id": "37ea",
+      "contact": [
+        {
+          "name": "1231",
+          "phone": "(11) 23333-3333"
+        }
+      ],
+      "address": {
+        "state": "MG",
+        "code": "31035-590",
+        "city": "Belo Horizonte",
+        "number": "123",
+        "street": "Rua Coronel Praes",
+        "reference": "123"
+      },
+      "name": "123123",
+      "description": "12312"
     }
   ]
 }

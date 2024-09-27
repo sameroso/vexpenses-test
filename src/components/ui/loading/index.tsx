@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components'
 interface LoadingProps {
     size?: number
     color?: string
-    thickness?: number
+    $thickness?: number
 }
 
 const spin = keyframes`
@@ -21,9 +21,9 @@ const LoadingWrapper = styled.div<LoadingProps>`
 const Spinner = styled.div<LoadingProps>`
     width: 100%;
     height: 100%;
-    border: ${(props) => props.thickness}px solid
+    border: ${(props) => props.$thickness}px solid
         ${({ theme }) => theme.colors.primary.light};
-    border-top: ${(props) => props.thickness}px solid
+    border-top: ${(props) => props.$thickness}px solid
         ${({ theme }) => theme.colors.primary.main};
     border-radius: 50%;
     animation: ${spin} 1s linear infinite;
@@ -32,11 +32,11 @@ const Spinner = styled.div<LoadingProps>`
 export const Loading: React.FC<LoadingProps> = ({
     size = 40,
     color = '#007bff',
-    thickness = 4,
+    $thickness = 4,
 }) => {
     return (
         <LoadingWrapper size={size} role="status" aria-label="Loading">
-            <Spinner size={size} color={color} thickness={thickness} />
+            <Spinner size={size} color={color} $thickness={$thickness} />
         </LoadingWrapper>
     )
 }
