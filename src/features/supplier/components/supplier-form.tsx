@@ -3,14 +3,16 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { SupplierDTO } from '@/services/suppliers'
 import { ReactNode } from 'react'
-import { Button, Minus } from '@/components/ui'
+import { Minus } from '@/components/ui'
 import { useGetAddressByCep } from '@/features/common/adress/api/get-adress-by-cep'
 import { Input } from '@/components/ui/inputs/input'
 import {
     FieldGroupTitle,
     FormFieldsContainer,
-    StyledContactWrapper,
-} from './supplier-form-components'
+    ContactWrapper,
+    RemoveContactWrapperButton,
+    AddContactButton,
+} from './supplier-form-styles'
 import { Select } from '@/components/ui/inputs/select'
 import { states } from '@/utils/brazilian-states'
 import { cepMask, phoneMask } from '@/utils/masks'
@@ -206,8 +208,8 @@ export function SupplierForm(props: SupplierFormProps) {
             <FormFieldsContainer>
                 {fields.map((contact, index) => {
                     return (
-                        <StyledContactWrapper key={contact.phone + index}>
-                            <div style={{ textAlign: 'right' }}>
+                        <ContactWrapper key={contact.phone + index}>
+                            <RemoveContactWrapperButton>
                                 <Minus
                                     tooltipContent="Remover contato"
                                     id={`removeContact${index}`}
@@ -215,7 +217,7 @@ export function SupplierForm(props: SupplierFormProps) {
                                         remove(index)
                                     }}
                                 />
-                            </div>
+                            </RemoveContactWrapperButton>
                             <Input
                                 label="Nome"
                                 autoComplete="off"
@@ -242,20 +244,20 @@ export function SupplierForm(props: SupplierFormProps) {
                                     errors?.contact?.[index]?.phone?.message
                                 }
                             />
-                        </StyledContactWrapper>
+                        </ContactWrapper>
                     )
                 })}
             </FormFieldsContainer>
-            <div style={{ margin: '10px 0px' }}>
-                <Button
-                    type="button"
-                    onClick={() => {
-                        append({ name: '', phone: '' })
-                    }}
-                >
-                    Adicionar contato
-                </Button>
-            </div>
+
+            <AddContactButton
+                type="button"
+                onClick={() => {
+                    append({ name: '', phone: '' })
+                }}
+            >
+                Adicionar contato
+            </AddContactButton>
+
             {props.children?.(formArgs)}
         </form>
     )

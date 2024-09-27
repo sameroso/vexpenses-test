@@ -31,3 +31,14 @@ export const TopActionsContainer = styled.div`
     padding: 16px;
     gap: 8px;
 `
+
+export const LoadingContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+export const InfoBannerItemsContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 16px;
+`

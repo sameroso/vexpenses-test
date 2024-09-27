@@ -11,7 +11,12 @@ import {
 import { useState } from 'react'
 import { SupplierDTO } from '@/services/suppliers'
 import { downloadCSV } from '@/utils/csv-helpers'
-import { CardsContainer, TopActionsContainer } from './styles'
+import {
+    CardsContainer,
+    InfoBannerItemsContainer,
+    LoadingContainer,
+    TopActionsContainer,
+} from './styles'
 import { DeleteSupplierModal } from '@/features/supplier/components/delete-supplier-modal'
 import { SupplierModalActions } from '@/features/supplier/components/supplier-modal-actions'
 
@@ -53,20 +58,14 @@ export const SupplierPage = () => {
             />
 
             {status === 'pending' && (
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <LoadingContainer>
                     <Loading size={60} />
-                </div>
+                </LoadingContainer>
             )}
             {status === 'error' && (
                 <InformationBanner
                     message={
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '16px',
-                            }}
-                        >
+                        <InfoBannerItemsContainer>
                             <Reload
                                 onClick={() => {
                                     refetch()
@@ -78,7 +77,7 @@ export const SupplierPage = () => {
                                 Não foi possível carregar seus fornecedores, por
                                 favor tente novamente
                             </InfoBannerMessage>
-                        </div>
+                        </InfoBannerItemsContainer>
                     }
                     type="error"
                     title="Erro ao carregar fornecedores"

@@ -1,36 +1,28 @@
-import { Card, CardContent, CardTitle } from '@/components/ui'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
 import { SupplierDTO } from '@/services/suppliers'
-import {
-    FieldGroupTitle,
-    FormFieldsContainer,
-} from './supplier-form-components'
+import { FieldGroupTitle, FormFieldsContainer } from './supplier-form-styles'
 import { states } from '@/utils/brazilian-states'
 import { Delete } from '@/components/ui/icons/delete'
 import { Edit } from '@/components/ui/icons/edit'
+import {
+    ContactContainer,
+    HeaderButtonsContainer,
+} from './supplier-card-styles'
 
 export const SupplierCard = (props: {
     supplier?: SupplierDTO
     onClickEdit: (supplier: SupplierDTO) => void
     onClickDelete: (supplier: SupplierDTO) => void
 }) => {
+    const supplierStateAdress =
+        states.find((val) => val.uf === props.supplier?.address.state || '')
+            ?.name || ''
     return (
         <Card>
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                }}
-            >
+            <CardHeader>
                 <CardTitle>{props.supplier?.name}</CardTitle>
 
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '16px',
-                    }}
-                >
+                <HeaderButtonsContainer>
                     <Edit
                         onClick={() => {
                             props.onClickEdit(props.supplier!)
@@ -45,9 +37,9 @@ export const SupplierCard = (props: {
                         id="deleteSupplier"
                         tooltipContent="Deletar Fornecedor"
                     />
-                </div>
-            </div>
-            <CardContent style={{ overflowY: 'auto' }}>
+                </HeaderButtonsContainer>
+            </CardHeader>
+            <CardContent>
                 <>
                     <FieldGroupTitle>Informações Pessoais</FieldGroupTitle>
                     <FormFieldsContainer>
@@ -80,16 +72,7 @@ export const SupplierCard = (props: {
                         </div>
                         <div>
                             <div>Estado</div>
-                            <div>
-                                {
-                                    states.find(
-                                        (val) =>
-                                            val.uf ===
-                                                props.supplier?.address.state ||
-                                            ''
-                                    )?.name
-                                }
-                            </div>
+                            <div>{supplierStateAdress}</div>
                         </div>
                         <div>
                             <div>Referência</div>
@@ -98,14 +81,7 @@ export const SupplierCard = (props: {
                     </FormFieldsContainer>
                     <FieldGroupTitle>Contatos</FieldGroupTitle>
 
-                    <div
-                        style={{
-                            display: 'flex',
-                            alignItems: 'start',
-                            gap: '16px',
-                            flexWrap: 'wrap',
-                        }}
-                    >
+                    <ContactContainer>
                         {props.supplier?.contact.map((contact) => (
                             <div key={contact.phone}>
                                 <div>
@@ -116,7 +92,7 @@ export const SupplierCard = (props: {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </ContactContainer>
                 </>
             </CardContent>
         </Card>

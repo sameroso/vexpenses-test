@@ -13,3 +13,9 @@ export const HeaderContainer = styled.div`
 export const HeaderText = styled.h2`
     color: ${({ theme }) => theme.colors.primary.contrastText};
 `
+
+export const HeaderItemsContainer = styled.h2`
+    display: flex;
+    align-items: center;
+    gap: 16px;
+`

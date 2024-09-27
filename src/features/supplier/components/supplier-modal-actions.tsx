@@ -11,6 +11,7 @@ import { SupplierDTO } from '@/services/suppliers'
 import { useEditSupplier } from '../api/edit-supplier'
 import { useCreateSupplier } from '../api/create-supplier'
 import { toast } from 'react-toastify'
+import { FormActionButtonsContainer } from './supplier-modal-actions-styles'
 
 interface EditModalProps {
     isOpen: boolean
@@ -80,13 +81,7 @@ export const SupplierModalActions = (props: EditModalProps) => {
                 <SupplierForm formFields={props.supplier}>
                     {({ handleSubmit }) => {
                         return (
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'end',
-                                    gap: '8px',
-                                }}
-                            >
+                            <FormActionButtonsContainer>
                                 <Button onClick={props.onClose}>
                                     cancelar
                                 </Button>
@@ -98,7 +93,7 @@ export const SupplierModalActions = (props: EditModalProps) => {
                                         ? 'Salvando'
                                         : 'Salvar'}
                                 </Button>
-                            </div>
+                            </FormActionButtonsContainer>
                         )
                     }}
                 </SupplierForm>
