@@ -5,6 +5,7 @@ import {
     ExportIcon,
     InfoBannerMessage,
     InformationBanner,
+    Input,
     Loading,
     ReloadIcon,
 } from '@/components/ui'
@@ -19,17 +20,33 @@ import {
 } from './styles'
 import { DeleteSupplierModal } from '@/features/supplier/components/delete-supplier-modal'
 import { SupplierModalActions } from '@/features/supplier/components/supplier-modal-actions'
+import { useForm } from 'react-hook-form'
 
 export const SupplierPage = () => {
     const { data, status, refetch } = useGetSuppliers()
 
     const [selectedSupplier, setSelectedSupplier] = useState<SupplierDTO>()
 
+    const { watch, register } = useForm<{ searchFilter: '' }>({
+        defaultValues: { searchFilter: '' },
+    })
+
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
+    const searchString = watch('searchFilter')
+
+    const filtereSupplierBySearchString = (supplier: SupplierDTO) =>
+        supplier.name
+            .toLocaleLowerCase()
+            .includes(searchString.toLocaleLowerCase())
+
     return (
         <>
+            <Input
+                {...register('searchFilter')}
+                placeholder="Filtrar por nome"
+            />
             <TopActionsContainer>
                 <AddIcon
                     id="addSupplier"
@@ -92,23 +109,25 @@ export const SupplierPage = () => {
             )}
             {status === 'success' && data.data.length > 0 && (
                 <CardsContainer>
-                    {data?.data.map((supplier) => {
-                        return (
-                            <div key={supplier.id}>
-                                <SupplierCard
-                                    onClickDelete={(supplier) => {
-                                        setSelectedSupplier(supplier)
-                                        setIsDeleteModalOpen(true)
-                                    }}
-                                    supplier={supplier}
-                                    onClickEdit={(supplier) => {
-                                        setSelectedSupplier(supplier)
-                                        setIsModalOpen(true)
-                                    }}
-                                />
-                            </div>
-                        )
-                    })}
+                    {data?.data
+                        .filter(filtereSupplierBySearchString)
+                        .map((supplier) => {
+                            return (
+                                <div key={supplier.id}>
+                                    <SupplierCard
+                                        onClickDelete={(supplier) => {
+                                            setSelectedSupplier(supplier)
+                                            setIsDeleteModalOpen(true)
+                                        }}
+                                        supplier={supplier}
+                                        onClickEdit={(supplier) => {
+                                            setSelectedSupplier(supplier)
+                                            setIsModalOpen(true)
+                                        }}
+                                    />
+                                </div>
+                            )
+                        })}
                 </CardsContainer>
             )}
         </>

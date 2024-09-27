@@ -18,10 +18,6 @@ const StyledInput = styled.input`
 
     ${inputBorder}
     ${inputDisabled}
-
-  &::placeholder {
-        color: ${({ theme }) => theme.colors.grey[50]};
-    }
 `
 
 type InputIntrinscElements = JSX.IntrinsicElements['input']
