@@ -52,7 +52,7 @@ export const ModalTitle = styled.h2`
 `
 
 export const ModalBody = styled.div`
-    margin-bottom: 15px;
+    margin-bottom: 35px;
 `
 
 export const ModalFooter = styled.div`

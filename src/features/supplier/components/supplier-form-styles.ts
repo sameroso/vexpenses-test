@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui'
+import { TextButton } from '@/components/ui'
 import styled from 'styled-components'
 
 export const FormFieldsContainer = styled.div`
@@ -21,6 +21,6 @@ export const RemoveContactWrapperButton = styled.div`
     text-align: right;
 `
 
-export const AddContactButton = styled(Button)`
+export const AddContactButton = styled(TextButton)`
     margin: 10px 0;
 `

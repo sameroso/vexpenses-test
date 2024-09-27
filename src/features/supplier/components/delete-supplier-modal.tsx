@@ -7,6 +7,7 @@ import {
     ModalFooter,
     ModalHeader,
     ModalTitle,
+    TextButton,
 } from '@/components/ui'
 import { toast } from 'react-toastify'
 import { useRemoveSupplier } from '../api/remove-suppliers'
@@ -45,20 +46,18 @@ export const DeleteSupplierModal = (props: DeleteModalProps) => {
                 />
             </ModalHeader>
             <ModalBody>
-                <>
-                    <p>Deseja remover o fornecedor {props.supplier?.name}?</p>
-                    <ModalFooter>
-                        <ModalFooterActionsContainer>
-                            <Button onClick={props.onClose}>cancelar</Button>
-                            <Button type="button" onClick={removeSupplier}>
-                                {removeSupplierMutation.status === 'pending'
-                                    ? 'removendo...'
-                                    : 'remover'}
-                            </Button>
-                        </ModalFooterActionsContainer>
-                    </ModalFooter>
-                </>
+                <p>Deseja remover o fornecedor {props.supplier?.name}?</p>
             </ModalBody>
+            <ModalFooter>
+                <ModalFooterActionsContainer>
+                    <TextButton onClick={props.onClose}>cancelar</TextButton>
+                    <Button type="button" onClick={removeSupplier}>
+                        {removeSupplierMutation.status === 'pending'
+                            ? 'removendo...'
+                            : 'remover'}
+                    </Button>
+                </ModalFooterActionsContainer>
+            </ModalFooter>
         </Modal>
     )
 }

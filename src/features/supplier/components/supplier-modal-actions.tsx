@@ -5,6 +5,7 @@ import {
     ModalBody,
     ModalHeader,
     ModalTitle,
+    TextButton,
 } from '@/components/ui'
 import { SupplierForm, SupplierFormFields } from './supplier-form'
 import { SupplierDTO } from '@/services/suppliers'
@@ -82,9 +83,9 @@ export const SupplierModalActions = (props: EditModalProps) => {
                     {({ handleSubmit }) => {
                         return (
                             <FormActionButtonsContainer>
-                                <Button onClick={props.onClose}>
+                                <TextButton onClick={props.onClose}>
                                     cancelar
-                                </Button>
+                                </TextButton>
                                 <Button
                                     type="button"
                                     onClick={handleSubmit(handleSubmitForm)}
