@@ -1,7 +1,7 @@
 import { useFieldArray, useForm, UseFormReturn } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Supplier } from "@/services/suppliers";
+import { SupplierDTO } from "@/services/suppliers";
 import { ReactNode } from "react";
 import { Button } from "@/components/ui";
 import { useGetAddressByCep } from "@/features/common/adress/api/get-adress-by-cep";
@@ -56,22 +56,24 @@ const schema = yup
   })
   .required();
 
-interface SupplierFormProps {
-  supplier?: Omit<Supplier, "id">;
-  children?: (props: UseFormReturn<Omit<Supplier, "id">>) => ReactNode;
+export type SupplierFormFields = Omit<SupplierDTO, "id">;
+
+export interface SupplierFormProps {
+  formFields?: SupplierFormFields;
+  children?: (props: UseFormReturn<SupplierFormFields>) => ReactNode;
 }
 
 export function SupplierForm(props: SupplierFormProps) {
-  const formArgs = useForm<Omit<Supplier, "id">>({
+  const formArgs = useForm<SupplierFormFields>({
     mode: "all",
     defaultValues: {
-      ...props.supplier,
-      contact: props?.supplier?.contact.length
-        ? props.supplier.contact
+      ...props.formFields,
+      contact: props?.formFields?.contact.length
+        ? props.formFields.contact
         : [{ name: "", phone: "" }],
       address: {
-        ...props.supplier?.address,
-        state: props.supplier?.address.state || "",
+        ...props.formFields?.address,
+        state: props.formFields?.address.state || "",
       },
     },
     resolver: yupResolver(schema),

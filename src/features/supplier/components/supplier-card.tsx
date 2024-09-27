@@ -1,5 +1,5 @@
 import { Card, CardContent, CardTitle } from "@/components/ui";
-import { Supplier } from "@/services/suppliers";
+import { SupplierDTO } from "@/services/suppliers";
 import {
   FieldGroupTitle,
   FormFieldsContainer,
@@ -9,9 +9,9 @@ import { Delete } from "@/components/ui/icons/delete";
 import { Edit } from "@/components/ui/icons/edit";
 
 export const SupplierCard = (props: {
-  supplier?: Supplier;
-  onClickEdit: (supplier: Supplier) => void;
-  onClickDelete: (supplier: Supplier) => void;
+  supplier?: SupplierDTO;
+  onClickEdit: (supplier: SupplierDTO) => void;
+  onClickDelete: (supplier: SupplierDTO) => void;
 }) => {
   return (
     <Card>

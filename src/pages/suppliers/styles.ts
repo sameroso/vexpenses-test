@@ -24,3 +24,10 @@ export const CardsContainer = styled.div`
   }
   gap: 16px;
 `;
+
+export const TopActionsContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  padding: 16px;
+  gap: 8px;
+`;

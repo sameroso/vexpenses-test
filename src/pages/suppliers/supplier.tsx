@@ -11,13 +11,13 @@ import {
   ModalTitle,
 } from "@/components/ui";
 import { useState } from "react";
-import { Supplier } from "@/services/suppliers";
+import { SupplierDTO } from "@/services/suppliers";
 import { useEditSupplier } from "@/features/supplier/api/edit-supplier";
 import { useRemoveSupplier } from "@/features/supplier/api/remove-suppliers";
 import { downloadCSV } from "@/utils/csv-helpers";
 import { Add } from "@/components/ui/icons/add";
 import { Export } from "@/components/ui/icons/export";
-import { CardsContainer } from "./styles";
+import { CardsContainer, TopActionsContainer } from "./styles";
 import { Close } from "@/components/ui/icons/close";
 import { toast } from "react-toastify";
 // import { useRemoveSupplier } from "@/features/supplier/api/remove-suppliers";
@@ -25,7 +25,7 @@ import { toast } from "react-toastify";
 export const SupplierPage = () => {
   const { data } = useGetSuppliers();
 
-  const [selectedSupplier, setSelectedSupplier] = useState<Supplier>();
+  const [selectedSupplier, setSelectedSupplier] = useState<SupplierDTO>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -43,20 +43,13 @@ export const SupplierPage = () => {
       );
     } catch {
       toast.error(
-        `Não foi possível remover o fornecedir ${selectedSupplier?.name}. Por favor tente mais tarde`
+        `Não foi possível remover o fornecedor ${selectedSupplier?.name}. Por favor tente mais tarde`
       );
     }
   };
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          padding: "16px",
-          gap: "8px",
-        }}
-      >
+      <TopActionsContainer>
         <Add
           id="addSupplier"
           onClick={() => {
@@ -71,8 +64,7 @@ export const SupplierPage = () => {
           id="downloadCsv"
           onClick={() => downloadCSV(data?.data || [{}], "suppliers")}
         />
-      </div>
-
+      </TopActionsContainer>
       <Modal isOpen={isDeleteModalOpen}>
         <ModalHeader
           style={{
@@ -99,7 +91,7 @@ export const SupplierPage = () => {
                   cancelar
                 </Button>
                 <Button type="button" onClick={removeSupplier}>
-                  {createSupplierMutation.status === "pending"
+                  {removeSupplierMutation.status === "pending"
                     ? "removendo..."
                     : "remover"}
                 </Button>
@@ -118,7 +110,7 @@ export const SupplierPage = () => {
           />
         </ModalHeader>
         <ModalBody>
-          <SupplierForm supplier={selectedSupplier}>
+          <SupplierForm formFields={selectedSupplier}>
             {({ handleSubmit }) => {
               return (
                 <>

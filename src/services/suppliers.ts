@@ -1,11 +1,11 @@
 import { api } from "@/lib/client-api";
 
-interface Contact {
+interface ContactDTO {
   name: string;
   phone: string;
 }
 
-interface Address {
+interface SupplierAddressDTO {
   code: string;
   state: string;
   city: string;
@@ -14,32 +14,32 @@ interface Address {
   reference?: string;
 }
 
-export interface Supplier {
+export interface SupplierDTO {
   id: string;
   name: string;
   description?: string;
-  contact: Contact[];
-  address: Address;
+  contact: ContactDTO[];
+  address: SupplierAddressDTO;
 }
 
 const getSuppliers = () => {
-  return api.get<Supplier[]>("/suppliers");
+  return api.get<SupplierDTO[]>("/suppliers");
 };
 
 const getSupplierById = (id: string) => {
-  return api.get<Supplier>(`/suppliers/${id}`);
+  return api.get<SupplierDTO>(`/suppliers/${id}`);
 };
 
 const removeSupplier = (id: string) => {
-  return api.delete<Supplier>(`/suppliers/${id}`);
+  return api.delete<SupplierDTO>(`/suppliers/${id}`);
 };
 
-const editSupplier = (args: { id: string; supplier: Supplier }) => {
+const editSupplier = (args: { id: string; supplier: SupplierDTO }) => {
   return api.patch(`/suppliers/${args.id}`, args.supplier);
 };
 
-const createSupplier = (args: Omit<Supplier, "id">) => {
-  return api.post<Supplier>("/suppliers", args);
+const createSupplier = (args: Omit<SupplierDTO, "id">) => {
+  return api.post<SupplierDTO>("/suppliers", args);
 };
 
 export const supplierService = {

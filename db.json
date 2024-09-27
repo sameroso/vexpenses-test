@@ -1,25 +1,6 @@
 {
   "suppliers": [
     {
-      "id": "2",
-      "name": "Hector Salamandra senho das armas",
-      "description": "Distribuidor de Mesas",
-      "contact": [
-        {
-          "name": "whatsapp",
-          "phone": "(31) 994536-4356"
-        }
-      ],
-      "address": {
-        "city": "Belo Horizonte",
-        "code": "31035-590",
-        "number": "326",
-        "reference": "Perto da casa da construção",
-        "state": "MG",
-        "street": "Rua Coronel Praes"
-      }
-    },
-    {
       "id": "5862",
       "name": "Thiago",
       "description": "Carinha que mora logo ali",
@@ -41,83 +22,6 @@
           "phone": "(31) 99156-6498"
         }
       ]
-    },
-    {
-      "id": "9fea",
-      "contact": [
-        {
-          "name": "asda",
-          "phone": "asdada"
-        }
-      ],
-      "name": "Samer Kayali Koubeissi Rola",
-      "description": "",
-      "address": {
-        "code": "31035530",
-        "city": "Belo Horizonte",
-        "number": "233",
-        "street": "Rua Alto da Mata",
-        "state": "MG",
-        "reference": "asdada"
-      }
-    },
-    {
-      "id": "6ffd",
-      "contact": [
-        {
-          "name": "123",
-          "phone": "123"
-        }
-      ],
-      "name": "123213",
-      "description": "123123",
-      "address": {
-        "code": "31035590",
-        "city": "Belo Horizonte",
-        "number": "123",
-        "street": "Rua Coronel Praes",
-        "state": "MG",
-        "reference": "123"
-      }
-    },
-    {
-      "id": "578e",
-      "contact": [
-        {
-          "name": "123",
-          "phone": "123"
-        },
-        {
-          "name": "12312",
-          "phone": "123123123"
-        },
-        {
-          "name": "123123",
-          "phone": "1231231"
-        },
-        {
-          "name": "123123",
-          "phone": "123131"
-        },
-        {
-          "name": "123123",
-          "phone": "12312313"
-        },
-        {
-          "name": "1231331321321",
-          "phone": "3122313212312313"
-        }
-      ],
-      "address": {
-        "state": "MG",
-        "code": "31035590",
-        "city": "Belo Horizonte",
-        "number": "319",
-        "street": "Rua Coronel Praes",
-        "reference": "123"
-      },
-      "name": "Samer Kayali Koubeissi Rola",
-      "description": "123"
     }
   ]
 }

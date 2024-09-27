@@ -1,6 +1,6 @@
 import { viaCepApi } from "@/lib/via-cep-api";
 
-interface Address {
+interface AddressDTO {
   cep: string;
   logradouro: string;
   complemento?: string;
@@ -17,7 +17,7 @@ interface Address {
 }
 
 const getAdressByCode = (cep: string) => {
-  return viaCepApi.get<Address>(`/${cep}/json`);
+  return viaCepApi.get<AddressDTO>(`/${cep}/json`);
 };
 
 export const AddressService = {
