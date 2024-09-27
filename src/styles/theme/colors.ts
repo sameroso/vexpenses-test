@@ -12,5 +12,22 @@ export interface Colors {
   };
   error: {
     main: string;
+    dark: string;
+    light: string;
+  };
+  warning: {
+    main: string;
+    dark: string;
+    light: string;
+  };
+  info: {
+    main: string;
+    dark: string;
+    light: string;
+  };
+  success: {
+    main: string;
+    dark: string;
+    light: string;
   };
 }
