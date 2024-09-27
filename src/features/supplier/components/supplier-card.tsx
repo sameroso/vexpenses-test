@@ -7,7 +7,21 @@ import { Edit } from '@/components/ui/icons/edit'
 import {
     ContactContainer,
     HeaderButtonsContainer,
+    InfoFieldLabel,
 } from './supplier-card-styles'
+
+interface InfoFieldProps {
+    label?: string
+    value?: string
+}
+const InfoField = ({ label = '', value = '' }: InfoFieldProps) => {
+    return (
+        <div>
+            <InfoFieldLabel>{label}</InfoFieldLabel>
+            <span>{value}</span>
+        </div>
+    )
+}
 
 export const SupplierCard = (props: {
     supplier?: SupplierDTO
@@ -43,53 +57,46 @@ export const SupplierCard = (props: {
                 <>
                     <FieldGroupTitle>Informações Pessoais</FieldGroupTitle>
                     <FormFieldsContainer>
-                        <div>
-                            <div>Nome</div>
-                            <div>{props.supplier?.name}</div>
-                        </div>
-                        <div>
-                            <div>Descrição</div>
-                            <div>{props.supplier?.description}</div>
-                        </div>
+                        <InfoField label="Nome" value={props.supplier?.name} />
+
+                        <InfoField
+                            label="Descrição"
+                            value={props.supplier?.description}
+                        />
                     </FormFieldsContainer>
                     <FieldGroupTitle>Endereço</FieldGroupTitle>
                     <FormFieldsContainer>
-                        <div>
-                            <div>CEP</div>
-                            <div>{props.supplier?.address.code}</div>
-                        </div>
-                        <div>
-                            <div>Cidade</div>
-                            <div>{props.supplier?.address.city}</div>
-                        </div>
-                        <div>
-                            <div>Número</div>
-                            <div>{props.supplier?.address.number}</div>
-                        </div>
-                        <div>
-                            <div>Logradouro</div>
-                            <div>{props.supplier?.address.street}</div>
-                        </div>
-                        <div>
-                            <div>Estado</div>
-                            <div>{supplierStateAdress}</div>
-                        </div>
-                        <div>
-                            <div>Referência</div>
-                            <div>{props.supplier?.address.reference}</div>
-                        </div>
+                        <InfoField
+                            label="CEP"
+                            value={props.supplier?.address.code}
+                        />
+                        <InfoField
+                            label="Cidade"
+                            value={props.supplier?.address.city}
+                        />
+                        <InfoField
+                            label="Número"
+                            value={props.supplier?.address.number}
+                        />
+                        <InfoField
+                            label="Logradouro"
+                            value={props.supplier?.address.street}
+                        />
+                        <InfoField label="Estado" value={supplierStateAdress} />
+                        <InfoField
+                            label="Referência"
+                            value={props.supplier?.address.reference}
+                        />
                     </FormFieldsContainer>
                     <FieldGroupTitle>Contatos</FieldGroupTitle>
-
                     <ContactContainer>
                         {props.supplier?.contact.map((contact) => (
                             <div key={contact.phone}>
-                                <div>
-                                    <div>{contact.name}</div>
-                                </div>
-                                <div>
-                                    <div>{contact.phone}</div>
-                                </div>
+                                <InfoField
+                                    key={contact.phone}
+                                    label={contact.name}
+                                    value={contact.phone}
+                                />
                             </div>
                         ))}
                     </ContactContainer>

@@ -12,3 +12,8 @@ export const HeaderButtonsContainer = styled.div`
     align-items: center;
     gap: 16px;
 `
+export const InfoFieldLabel = styled.span`
+    font-weight: 600;
+    display: block;
+    color: ${({ theme }) => theme.colors.grey[200]};
+`
