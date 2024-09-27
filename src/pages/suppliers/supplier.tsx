@@ -109,8 +109,8 @@ export const SupplierPage = () => {
             )}
             {status === 'success' && data.data.length > 0 && (
                 <CardsContainer>
-                    {data?.data
-                        .filter(filtereSupplierBySearchString)
+                    {(data?.data || [])
+                        ?.filter(filtereSupplierBySearchString)
                         .map((supplier) => {
                             return (
                                 <div key={supplier.id}>
