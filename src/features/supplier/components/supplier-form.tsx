@@ -15,7 +15,6 @@ import {
 import { states } from '@/utils/brazilian-states'
 import { cepMask, phoneMask } from '@/utils/masks'
 
-const ONLY_LETTERS_AND_SPACES = /^[a-zA-Z\s]+$/
 const ONLY_NUMERIC_CHARS = /^[0-9]+$/
 
 const schema = yup
@@ -41,13 +40,7 @@ const schema = yup
                     .required('Este campo é obrigatório')
                     .min(9, 'CEP inválido'),
                 state: yup.string().required('Este campo é obrigatório').min(2),
-                city: yup
-                    .string()
-                    .required('Este campo é obrigatório')
-                    .matches(
-                        ONLY_LETTERS_AND_SPACES,
-                        'Este campo deve conter apenas letras'
-                    ),
+                city: yup.string().required('Este campo é obrigatório'),
                 street: yup.string().required('Este campo é obrigatório'),
                 number: yup
                     .string()
