@@ -15,6 +15,9 @@ import { Select } from "@/components/ui/inputs/select";
 import { states } from "@/utils/brazilian-states";
 import { cepMask, phoneMask } from "@/utils/masks";
 
+const ONLY_LETTERS_AND_SPACES = /^[a-zA-Z\s]+$/;
+const ONLY_NUMERIC_CHARS = /^[0-9]+$/;
+
 const schema = yup
   .object({
     name: yup.string().required("Este campo é obrigatório"),
@@ -41,15 +44,18 @@ const schema = yup
         city: yup
           .string()
           .required("Este campo é obrigatório")
-          .matches(/^[a-zA-Z\s]+$/, "Este campo deve conter apenas letras"),
-        street: yup
-          .string()
-          .required("Este campo é obrigatório")
-          .matches(/[A-Za-z0-9]/),
+          .matches(
+            ONLY_LETTERS_AND_SPACES,
+            "Este campo deve conter apenas letras"
+          ),
+        street: yup.string().required("Este campo é obrigatório"),
         number: yup
           .string()
           .required("Este campo é obrigatório")
-          .matches(/[0-9]/),
+          .matches(
+            ONLY_NUMERIC_CHARS,
+            "Este campo deve conter apenas valores numéricos"
+          ),
         reference: yup.string(),
       })
       .required(),
@@ -83,6 +89,7 @@ export function SupplierForm(props: SupplierFormProps) {
     register,
     control,
     setValue,
+    setError,
     watch,
     formState: { errors },
   } = formArgs;
@@ -94,9 +101,21 @@ export function SupplierForm(props: SupplierFormProps) {
     queryConfig: { enabled: cep.length === 9 },
 
     onSuccess: (res) => {
+      if ("erro" in res.data) {
+        setError("address.code", {
+          message: "CEP não encontrado, por favor tente com outro CEP",
+        });
+        return;
+      }
+
       setValue("address.city", res.data.localidade);
       setValue("address.state", res.data.uf);
       setValue("address.street", res.data.logradouro);
+    },
+    onError: () => {
+      setError("address.code", {
+        message: "Falha ao carregar cep, por favor tente novamente",
+      });
     },
   });
 

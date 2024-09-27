@@ -16,8 +16,12 @@ interface AddressDTO {
   siafi: string;
 }
 
+interface AddressDTOErrorResponse {
+  erro: "true";
+}
+
 const getAdressByCode = (cep: string) => {
-  return viaCepApi.get<AddressDTO>(`/${cep}/json`);
+  return viaCepApi.get<AddressDTO | AddressDTOErrorResponse>(`/${cep}/json`);
 };
 
 export const AddressService = {
