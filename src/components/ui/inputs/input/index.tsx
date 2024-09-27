@@ -38,7 +38,10 @@ function InputComponent(
     const { label, errorMessage, ...rest } = props
     return (
         <InputWrapper>
-            <StyledLabel htmlFor="styledInput">{label}</StyledLabel>
+            <StyledLabel htmlFor="styledInput">
+                {label}
+                {props.required ? '*' : ''}
+            </StyledLabel>
             <StyledInput {...rest} ref={ref} />
             <StyledErrorMessage>{errorMessage || ' '}</StyledErrorMessage>
         </InputWrapper>

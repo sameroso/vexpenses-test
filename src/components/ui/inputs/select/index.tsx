@@ -45,7 +45,10 @@ function SelectComponent(
     return (
         <>
             <SelectWrapper>
-                <StyledLabel>{label}</StyledLabel>
+                <StyledLabel>
+                    {label}
+                    {props.required ? '*' : ''}
+                </StyledLabel>
                 <div>
                     <StyledSelect
                         {...rest}

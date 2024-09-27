@@ -135,6 +135,7 @@ export function SupplierForm(props: SupplierFormProps) {
                     label="Nome"
                     errorMessage={errors.name?.message}
                     autoComplete="off"
+                    required
                 />
 
                 <Input
@@ -150,6 +151,7 @@ export function SupplierForm(props: SupplierFormProps) {
                 <Input
                     {...register('address.code')}
                     label="CEP"
+                    required
                     errorMessage={errors.address?.code?.message}
                     autoComplete="off"
                     maxLength={9}
@@ -162,6 +164,7 @@ export function SupplierForm(props: SupplierFormProps) {
                 <Input
                     {...register('address.city')}
                     label="Cidade"
+                    required
                     disabled
                     errorMessage={errors.address?.city?.message}
                     autoComplete="off"
@@ -170,6 +173,7 @@ export function SupplierForm(props: SupplierFormProps) {
                 <Input
                     {...register('address.number')}
                     label="Número"
+                    required
                     errorMessage={errors.address?.number?.message}
                     autoComplete="off"
                 />
@@ -177,6 +181,7 @@ export function SupplierForm(props: SupplierFormProps) {
                 <Input
                     {...register('address.street')}
                     label="Logradouro"
+                    required
                     disabled
                     errorMessage={errors.address?.street?.message}
                     autoComplete="off"
@@ -190,6 +195,7 @@ export function SupplierForm(props: SupplierFormProps) {
                         value: state.uf,
                     }))}
                     label="Estado"
+                    required
                     errorMessage={errors.address?.state?.message}
                     autoComplete="off"
                 />
@@ -218,6 +224,7 @@ export function SupplierForm(props: SupplierFormProps) {
                             </RemoveContactWrapperButton>
                             <Input
                                 label="Nome"
+                                required
                                 autoComplete="off"
                                 {...register(`contact.${index}.name` as const)}
                                 errorMessage={
@@ -226,6 +233,7 @@ export function SupplierForm(props: SupplierFormProps) {
                             />
                             <Input
                                 label="Telefone"
+                                required
                                 maxLength={15}
                                 {...register(`contact.${index}.phone` as const)}
                                 onChange={(e) => {
