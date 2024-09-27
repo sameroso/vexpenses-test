@@ -1,7 +1,7 @@
 export interface Breakpoints {
-    xs: string;
-    sm: string;
-    md: string;
-    lg: string;
-    xl: string;
-  }
+    xs: string
+    sm: string
+    md: string
+    lg: string
+    xl: string
+}
