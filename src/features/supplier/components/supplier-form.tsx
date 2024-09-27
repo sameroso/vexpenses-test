@@ -207,13 +207,15 @@ export function SupplierForm(props: SupplierFormProps) {
                     return (
                         <ContactWrapper key={contact.phone + index}>
                             <RemoveContactWrapperButton>
-                                <MinusIcon
-                                    tooltipContent="Remover contato"
-                                    id={`removeContact${index}`}
-                                    onClick={() => {
-                                        remove(index)
-                                    }}
-                                />
+                                {fields.length > 1 && (
+                                    <MinusIcon
+                                        tooltipContent="Remover contato"
+                                        id={`removeContact${index}`}
+                                        onClick={() => {
+                                            remove(index)
+                                        }}
+                                    />
+                                )}
                             </RemoveContactWrapperButton>
                             <Input
                                 label="Nome"
