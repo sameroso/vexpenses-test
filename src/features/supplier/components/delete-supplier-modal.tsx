@@ -1,7 +1,7 @@
 import { SupplierDTO } from '@/services/suppliers'
 import {
     Button,
-    Close,
+    CloseIcon,
     Modal,
     ModalBody,
     ModalFooter,
@@ -39,7 +39,7 @@ export const DeleteSupplierModal = (props: DeleteModalProps) => {
         <Modal isOpen={props.isOpen}>
             <ModalHeader>
                 <ModalTitle>Remover Fornecedor</ModalTitle>
-                <Close
+                <CloseIcon
                     id="closeDeleteModal"
                     onClick={props.onClose}
                     tooltipContent="fechar"

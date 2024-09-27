@@ -1,6 +1,6 @@
 import {
     Button,
-    Close,
+    CloseIcon,
     Modal,
     ModalBody,
     ModalHeader,
@@ -72,7 +72,7 @@ export const SupplierModalActions = (props: EditModalProps) => {
                         ? 'Editar Fornecedor'
                         : 'Cadastrar Fornecedor'}
                 </ModalTitle>
-                <Close
+                <CloseIcon
                     onClick={props.onClose}
                     id="closeEditSupplierModal"
                     tooltipContent="Fechar"

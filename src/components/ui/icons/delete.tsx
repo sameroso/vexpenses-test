@@ -2,21 +2,21 @@ import { Trash2 } from 'lucide-react'
 import { Tooltip } from 'react-tooltip'
 import styled from 'styled-components'
 
-export const StyledDelete = styled(Trash2)`
+export const StyledDeleteIcon = styled(Trash2)`
     color: ${({ theme }) => theme.colors.error.main};
     cursor: pointer;
 `
 
-interface DeleteProps {
+interface DeleteIconProps {
     tooltipContent: string
     id: string
     onClick: () => void
 }
 
-export const Delete = (props: DeleteProps) => {
+export const DeleteIcon = (props: DeleteIconProps) => {
     return (
         <>
-            <StyledDelete id={props.id} onClick={props.onClick} />
+            <StyledDeleteIcon id={props.id} onClick={props.onClick} />
             <Tooltip
                 content={props.tooltipContent}
                 anchorSelect={`#${props.id}`}

@@ -1,12 +1,12 @@
 import { SupplierCard } from '@/features/supplier/components/supplier-card'
 import { useGetSuppliers } from '@/features/supplier/api/get-suppliers'
 import {
-    Add,
-    Export,
+    AddIcon,
+    ExportIcon,
     InfoBannerMessage,
     InformationBanner,
     Loading,
-    Reload,
+    ReloadIcon,
 } from '@/components/ui'
 import { useState } from 'react'
 import { SupplierDTO } from '@/services/suppliers'
@@ -31,7 +31,7 @@ export const SupplierPage = () => {
     return (
         <>
             <TopActionsContainer>
-                <Add
+                <AddIcon
                     id="addSupplier"
                     onClick={() => {
                         setSelectedSupplier(undefined)
@@ -40,7 +40,7 @@ export const SupplierPage = () => {
                     tooltipContent="Cadastrar Fornecedor"
                 />
 
-                <Export
+                <ExportIcon
                     tooltipContent="Exportar CSV"
                     id="downloadCsv"
                     onClick={() => downloadCSV(data?.data || [{}], 'suppliers')}
@@ -66,7 +66,7 @@ export const SupplierPage = () => {
                 <InformationBanner
                     message={
                         <InfoBannerItemsContainer>
-                            <Reload
+                            <ReloadIcon
                                 onClick={() => {
                                     refetch()
                                 }}

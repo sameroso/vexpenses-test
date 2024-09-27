@@ -2,21 +2,21 @@ import { MinusCircle } from 'lucide-react'
 import { Tooltip } from 'react-tooltip'
 import styled from 'styled-components'
 
-export const StyledMinus = styled(MinusCircle)`
+export const StyledMinusIcon = styled(MinusCircle)`
     color: ${({ theme }) => theme.colors.error.main};
     cursor: pointer;
 `
 
-interface MinusProps {
+interface MinusIconProps {
     tooltipContent: string
     id: string
     onClick: () => void
 }
 
-export const Minus = (props: MinusProps) => {
+export const MinusIcon = (props: MinusIconProps) => {
     return (
         <>
-            <StyledMinus id={props.id} onClick={props.onClick} />
+            <StyledMinusIcon id={props.id} onClick={props.onClick} />
             <Tooltip
                 content={props.tooltipContent}
                 anchorSelect={`#${props.id}`}

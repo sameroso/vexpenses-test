@@ -1,9 +1,14 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
+    DeleteIcon,
+    EditIcon,
+} from '@/components/ui'
 import { SupplierDTO } from '@/services/suppliers'
 import { FieldGroupTitle, FormFieldsContainer } from './supplier-form-styles'
 import { states } from '@/utils/brazilian-states'
-import { Delete } from '@/components/ui/icons/delete'
-import { Edit } from '@/components/ui/icons/edit'
 import {
     ContactContainer,
     HeaderButtonsContainer,
@@ -37,14 +42,14 @@ export const SupplierCard = (props: {
                 <CardTitle>{props.supplier?.name}</CardTitle>
 
                 <HeaderButtonsContainer>
-                    <Edit
+                    <EditIcon
                         onClick={() => {
                             props.onClickEdit(props.supplier!)
                         }}
                         id="editSuplier"
                         tooltipContent="Editar Fornecedor"
                     />
-                    <Delete
+                    <DeleteIcon
                         onClick={() => {
                             props.onClickDelete(props.supplier!)
                         }}
