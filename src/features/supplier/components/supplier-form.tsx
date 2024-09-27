@@ -12,8 +12,8 @@ import {
     RemoveContactWrapperButton,
     AddContactButton,
 } from './supplier-form-styles'
-import { states } from '@/utils/brazilian-states'
 import { cepMask, phoneMask } from '@/utils/masks'
+import { states } from '@/constants/brazilian-states'
 
 const ONLY_NUMERIC_CHARS = /^[0-9]+$/
 

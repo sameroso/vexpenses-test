@@ -8,7 +8,7 @@ import {
 } from '@/components/ui'
 import { SupplierDTO } from '@/services/suppliers'
 import { FieldGroupTitle, FormFieldsContainer } from './supplier-form-styles'
-import { states } from '@/utils/brazilian-states'
+import { states } from '@/constants/brazilian-states'
 import {
     ContactContainer,
     HeaderButtonsContainer,
