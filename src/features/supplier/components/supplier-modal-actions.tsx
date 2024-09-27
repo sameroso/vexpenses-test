@@ -35,7 +35,7 @@ export const SupplierModalActions = (props: EditModalProps) => {
             props.onSuccessSubmit?.()
         } catch {
             toast.error(
-                'Não foi possível cadastrado o fornecedor, Pro Favor tente novamente mais tarde'
+                'Não foi possível cadastrar o fornecedor, por favor tente novamente mais tarde'
             )
         }
     }
@@ -90,7 +90,9 @@ export const SupplierModalActions = (props: EditModalProps) => {
                                     type="button"
                                     onClick={handleSubmit(handleSubmitForm)}
                                 >
-                                    {createSupplierMutation.status === 'pending'
+                                    {createSupplierMutation.status ===
+                                        'pending' ||
+                                    editSupplierMutation.status === 'pending'
                                         ? 'Salvando'
                                         : 'Salvar'}
                                 </Button>
