@@ -2,7 +2,14 @@ import { SupplierCard } from "@/features/supplier/components/supplier-card";
 import { useGetSuppliers } from "@/features/supplier/api/get-suppliers";
 import { SupplierForm } from "@/features/supplier/components/supplier-form";
 import { useCreateSupplier } from "@/features/supplier/api/create-supplier";
-import { Button, Modal, ModalBody, ModalHeader } from "@/components/ui";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalTitle,
+} from "@/components/ui";
 import { useState } from "react";
 import { Supplier } from "@/services/suppliers";
 import { useEditSupplier } from "@/features/supplier/api/edit-supplier";
@@ -11,6 +18,8 @@ import { downloadCSV } from "@/utils/csv-helpers";
 import { Add } from "@/components/ui/icons/add";
 import { Export } from "@/components/ui/icons/export";
 import { CardsContainer } from "./styles";
+import { Close } from "@/components/ui/icons/close";
+import { toast } from "react-toastify";
 // import { useRemoveSupplier } from "@/features/supplier/api/remove-suppliers";
 
 export const SupplierPage = () => {
@@ -24,6 +33,20 @@ export const SupplierPage = () => {
   const createSupplierMutation = useCreateSupplier();
   const editSupplierMutation = useEditSupplier();
   const removeSupplierMutation = useRemoveSupplier();
+
+  const removeSupplier = async () => {
+    try {
+      await removeSupplierMutation.mutateAsync(selectedSupplier?.id || "");
+      setIsDeleteModalOpen(false);
+      toast.success(
+        `O Fornecedor ${selectedSupplier?.name} foi removido com successo!`
+      );
+    } catch {
+      toast.error(
+        `Não foi possível remover o fornecedir ${selectedSupplier?.name}. Por favor tente mais tarde`
+      );
+    }
+  };
   return (
     <>
       <div
@@ -51,41 +74,48 @@ export const SupplierPage = () => {
       </div>
 
       <Modal isOpen={isDeleteModalOpen}>
-        <ModalHeader>
-          <div>Remover Fornecedor</div>
-          <Button onClick={() => setIsDeleteModalOpen(false)}>Fechar</Button>
+        <ModalHeader
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <ModalTitle>Remover Fornecedor</ModalTitle>
+          <Close
+            id="closeDeleteModal"
+            onClick={() => setIsDeleteModalOpen(false)}
+            tooltipContent="fechar"
+          />
         </ModalHeader>
         <ModalBody>
           <>
             <p>Deseja remover o fornecedor {selectedSupplier?.name}?</p>
-            <Button onClick={() => setIsDeleteModalOpen(false)}>
-              cancelar
-            </Button>
-            <Button
-              type="button"
-              onClick={async () => {
-                try {
-                  await removeSupplierMutation.mutateAsync(
-                    selectedSupplier?.id || ""
-                  );
-                  setIsDeleteModalOpen(false);
-                } catch {
-                  alert("não foi possível remover");
-                  setIsDeleteModalOpen(false);
-                }
-              }}
-            >
-              {createSupplierMutation.status === "pending"
-                ? "removendo"
-                : "remover"}
-            </Button>
+            <ModalFooter>
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "8px" }}
+              >
+                <Button onClick={() => setIsDeleteModalOpen(false)}>
+                  cancelar
+                </Button>
+                <Button type="button" onClick={removeSupplier}>
+                  {createSupplierMutation.status === "pending"
+                    ? "removendo..."
+                    : "remover"}
+                </Button>
+              </div>
+            </ModalFooter>
           </>
         </ModalBody>
       </Modal>
       <Modal isOpen={isModalOpen}>
         <ModalHeader>
-          <div>Editar Fornecedor</div>
-          <Button onClick={() => setIsModalOpen(false)}>Fechar</Button>
+          <ModalTitle>Editar Fornecedor</ModalTitle>
+          <Close
+            onClick={() => setIsModalOpen(false)}
+            id="closeEditSupplierModal"
+            tooltipContent="Fechar"
+          />
         </ModalHeader>
         <ModalBody>
           <SupplierForm supplier={selectedSupplier}>

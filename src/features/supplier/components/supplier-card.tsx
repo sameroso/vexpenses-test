@@ -1,10 +1,12 @@
-import { Button, Card, CardContent, CardTitle } from "@/components/ui";
+import { Card, CardContent, CardTitle } from "@/components/ui";
 import { Supplier } from "@/services/suppliers";
 import {
   FieldGroupTitle,
   FormFieldsContainer,
 } from "./supplier-form-components";
 import { states } from "@/utils/brazilian-states";
+import { Delete } from "@/components/ui/icons/delete";
+import { Edit } from "@/components/ui/icons/edit";
 
 export const SupplierCard = (props: {
   supplier?: Supplier;
@@ -23,20 +25,20 @@ export const SupplierCard = (props: {
         <CardTitle>{props.supplier?.name}</CardTitle>
 
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <Button
-            onClick={() => {
-              props.onClickDelete(props.supplier!);
-            }}
-          >
-            Remover
-          </Button>
-          <Button
+          <Edit
             onClick={() => {
               props.onClickEdit(props.supplier!);
             }}
-          >
-            Editar
-          </Button>
+            id="editSuplier"
+            tooltipContent="Editar Fornecedor"
+          />
+          <Delete
+            onClick={() => {
+              props.onClickDelete(props.supplier!);
+            }}
+            id="deleteSupplier"
+            tooltipContent="Deletar Fornecedor"
+          />
         </div>
       </div>
       <CardContent style={{ overflowY: "auto" }}>

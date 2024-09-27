@@ -8,18 +8,6 @@
         {
           "name": "whatsapp",
           "phone": "(31) 994536-4356"
-        },
-        {
-          "name": "Miguel",
-          "phone": "(12) 31112-3331"
-        },
-        {
-          "name": "123",
-          "phone": "(12) 31111-1111"
-        },
-        {
-          "name": "1",
-          "phone": "(11) 11111-1111"
         }
       ],
       "address": {
@@ -32,31 +20,12 @@
       }
     },
     {
-      "id": "75dc",
-      "name": "asda",
-      "description": "asdads",
-      "address": {
-        "code": "31035590",
-        "city": "Belo Horizonte",
-        "number": "12312",
-        "street": "Rua Coronel Praes",
-        "state": "MG",
-        "reference": "123"
-      },
-      "contact": [
-        {
-          "name": "Samer Kayali Koubeissi Rola",
-          "phone": "31991566498"
-        }
-      ]
-    },
-    {
       "id": "5862",
       "name": "Thiago",
       "description": "Carinha que mora logo ali",
       "address": {
         "city": "Belo Horizonte",
-        "code": "31035590",
+        "code": "31035-590",
         "number": "12",
         "reference": "perto do posto de gasolina",
         "state": "MG",
@@ -65,11 +34,11 @@
       "contact": [
         {
           "name": "whatsapp",
-          "phone": "31998788554"
+          "phone": "(31) 99898-9898"
         },
         {
           "name": "telefone",
-          "phone": "3133234555111111123"
+          "phone": "(31) 99156-6498"
         }
       ]
     },

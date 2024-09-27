@@ -45,6 +45,12 @@ export const CloseButton = styled.button`
   }
 `;
 
+export const ModalTitle = styled.h2`
+  margin: 0;
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors.primary.dark};
+`;
+
 export const ModalBody = styled.div`
   margin-bottom: 15px;
 `;

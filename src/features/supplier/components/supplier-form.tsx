@@ -13,6 +13,7 @@ import {
 import { Select } from "@/components/ui/inputs/select";
 import { states } from "@/utils/brazilian-states";
 import { cepMask, phoneMask } from "@/utils/masks";
+import { Delete } from "@/components/ui/icons/delete";
 
 const schema = yup
   .object({
@@ -62,7 +63,7 @@ interface SupplierFormProps {
 
 export function SupplierForm(props: SupplierFormProps) {
   const formArgs = useForm<Omit<Supplier, "id">>({
-    mode:'all',
+    mode: "all",
     defaultValues: {
       ...props.supplier,
       contact: props?.supplier?.contact.length
@@ -97,7 +98,7 @@ export function SupplierForm(props: SupplierFormProps) {
     },
   });
 
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control: control,
     name: "contact",
     rules: { minLength: 1 },
@@ -180,19 +181,18 @@ export function SupplierForm(props: SupplierFormProps) {
       </FormFieldsContainer>
       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
         <FieldGroupTitle>Contatos</FieldGroupTitle>
-        <Button
-          type="button"
-          onClick={() => {
-            append({ name: "", phone: "" });
-          }}
-        >
-          Adicionar contato
-        </Button>
       </div>
       <FormFieldsContainer>
         {fields.map((contact, index) => {
           return (
             <div key={contact.phone + index}>
+              <Delete
+                tooltipContent="Remover contato"
+                id={`removeContact${index}`}
+                onClick={() => {
+                  remove(index);
+                }}
+              />
               <Input
                 label="Nome"
                 autoComplete="off"
@@ -217,6 +217,16 @@ export function SupplierForm(props: SupplierFormProps) {
           );
         })}
       </FormFieldsContainer>
+      <div style={{ textAlign: "right" }}>
+        <Button
+          type="button"
+          onClick={() => {
+            append({ name: "", phone: "" });
+          }}
+        >
+          Adicionar contato
+        </Button>
+      </div>
       {props.children?.(formArgs)}
     </form>
   );
